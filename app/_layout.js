@@ -1,6 +1,5 @@
-import { SplashScreen, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
-import { useCallback } from "react";
 // import * as SplashScreen from "expo-splash-screen";
 
 // SplashScreen.preventAutoHideAsync();
@@ -11,19 +10,11 @@ export const unstable_settings = {
 };
 
 const Layout = () => {
-  // Custom Fonts
   const [fontsLoaded] = useFonts({
     DMBold: require("../assets/fonts/DMSans-Bold.ttf"),
     DMMedium: require("../assets/fonts/DMSans-Medium.ttf"),
     DMRegular: require("../assets/fonts/DMSans-Regular.ttf"),
   });
-
-  // For loading the custom fonts on the screen
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync()
-    }
-  }, [fontsLoaded])
 
   if (!fontsLoaded) {
     return null;
